@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Myapp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="angular.min.js"></script>
+	<script src="script.js"></script>
+	<style>
+		#mensaje{
+			width: 200px;
+			background: #6c6c6c;
+			color: #fff;
+			border-radius: 30px;
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div ng-controller="mycontroller">
+		<input type="checkbox" ng-model="checkboxin"> Eres bienvenido?
+		<div id="mensaje" ng-hide="checkboxin">
+			<p>Bienvenido al sistema</p>
+		</div>
+		<input type="text" ng-model="buscador">
+		<ul>
+			<li ng-repeat="person in personas | filter: buscador  | orderBy:'sueldo'">{{person.name | lowercase}} {{person.sueldo | currency:"S/."}}</li>
+		</ul>
+	</div>
+</body>
+</html>
